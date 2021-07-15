@@ -36,4 +36,12 @@ public class ClientesController {
 		
 	}
 	
+	
+	@GetMapping("/")
+	public String ok() {
+		
+		return "Serviço funcionando normalmente!";
+		
+	}
+	
 }
