@@ -13,7 +13,7 @@ import br.com.api.cadastroclientes.domain.Clientes;
 import br.com.api.cadastroclientes.repository.ClientesRepository;
 
 @RestController
-@RequestMapping("clientes")
+@RequestMapping("/")
 public class ClientesController {
 
 	
