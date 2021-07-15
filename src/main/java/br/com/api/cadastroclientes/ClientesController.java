@@ -13,14 +13,14 @@ import br.com.api.cadastroclientes.domain.Clientes;
 import br.com.api.cadastroclientes.repository.ClientesRepository;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/")
 public class ClientesController {
 
 	
 	@Autowired
 	ClientesRepository clientesRepository;
 	
-	@GetMapping("/listar")
+	@GetMapping("/")
 	public ArrayList<Clientes> listaClientes(){
 				
 		return  (ArrayList<Clientes>) clientesRepository.findAll();
@@ -37,7 +37,7 @@ public class ClientesController {
 	}
 	
 	
-	@GetMapping("/")
+	
 	public String ok() {
 		
 		return "Serviço funcionando normalmente!";
