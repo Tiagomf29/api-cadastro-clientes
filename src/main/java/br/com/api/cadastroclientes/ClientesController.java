@@ -16,6 +16,7 @@ import br.com.api.cadastroclientes.repository.ClientesRepository;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin
 public class ClientesController {
 
 	
