@@ -30,6 +30,15 @@ public class ClientesController {
 				
 	}
 	
+	
+	@GetMapping("/listarPorNome/{nome}")
+	@CrossOrigin
+	public ArrayList<Clientes> listaClientesParcial(@PathVariable String nome){
+				
+		return  (ArrayList<Clientes>) clientesRepository.findByNomeContaining(nome);
+				
+	}	
+	
 	@PostMapping("/inserir")
 	@CrossOrigin
 	public void inserirClientes(@RequestBody Clientes cliente) {
