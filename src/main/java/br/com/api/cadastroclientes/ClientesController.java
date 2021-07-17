@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,12 +30,11 @@ public class ClientesController {
 				
 	}
 	
-	@PostMapping("/inserir/{nome}")
-	public void inserirClientes(@PathVariable String nome) {
+	@PostMapping("/inserir")
+	@CrossOrigin
+	public void inserirClientes(@RequestBody Clientes cliente) {
 		
-		Clientes c = new Clientes();
-		c.setNome(nome);
-		clientesRepository.save(c);
+		clientesRepository.save(cliente);
 		
 	}
 	
