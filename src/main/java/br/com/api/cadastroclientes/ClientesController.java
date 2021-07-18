@@ -1,8 +1,11 @@
 package br.com.api.cadastroclientes;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -42,9 +45,17 @@ public class ClientesController {
 	
 	@PostMapping("/inserir")
 	@CrossOrigin
-	public void inserirClientes(@RequestBody Clientes cliente) {
+	public ResponseEntity<Clientes> inserirClientes(@RequestBody Clientes cliente) {
 		
-		clientesRepository.save(cliente);
+		
+		List<Clientes> lista = clientesRepository.findByNome(cliente.getNome()); 
+		
+		if (lista.size() >=1){
+			return ResponseEntity.noContent().build();
+		}else {		
+			clientesRepository.save(cliente);
+			return ResponseEntity.ok(cliente);
+		}
 		
 	}
 	
