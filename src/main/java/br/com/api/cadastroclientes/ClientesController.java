@@ -37,9 +37,16 @@ public class ClientesController {
 	
 	@GetMapping("/listarPorNome/{nome}")
 	@CrossOrigin
-	public ArrayList<Clientes> listaClientesParcial(@PathVariable String nome){
-				
-		return  (ArrayList<Clientes>) clientesRepository.findByNomeContaining(nome);
+	public  ArrayList<Clientes> listaClientesParcial(@PathVariable String nome){
+		
+		List<Clientes> lista = clientesRepository.findByNomeContaining(nome); 
+		
+		if (lista.size() > 0){
+			return (ArrayList<Clientes>) lista;
+		}else {	
+		
+			return null;
+		}
 				
 	}	
 	
