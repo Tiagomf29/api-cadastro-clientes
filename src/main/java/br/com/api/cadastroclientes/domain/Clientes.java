@@ -5,11 +5,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity(name = "cliente")
 public class Clientes {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(generator = "incement")
+	@GenericGenerator(name = "increment",strategy = "increment")
 	private int id;
 	
 	private String nome;
